@@ -1,0 +1,1 @@
+Wroking with static libraries
