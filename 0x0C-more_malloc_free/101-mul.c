@@ -15,7 +15,7 @@ void _print(char *str, int l)
 	i = j = 0;
 	while (i < l)
 	{
-		if (str[i] != 0)
+		if (str[i] != '0')
 			j = 1;
 		if (j || i == l - 1)
 			_putchar(str[i]);
@@ -43,17 +43,17 @@ char *mul(char n, char *num, int num_index, char *dest, int dest_index)
 	mulrem = addrem = 0;
 	for (j = num_index, k = dest_index; j >= 0; j--, k--)
 	{
-		mul = (n - 0) * (num[j] - 0) + mulrem;
+		mul = (n - '0') * (num[j] - '0') + mulrem;
 		mulrem = mul / 10;
-		add = (dest[k] - 0) + (mul % 10) + addrem;
+		add = (dest[k] - '0') + (mul % 10) + addrem;
 		addrem = add / 10;
-		dest[k] = add % 10 + 0;
+		dest[k] = add % 10 + '0';
 	}
 	for (addrem += mulrem; k >= 0 && addrem; k--)
 	{
-		add = (dest[k] - 0) + addrem;
+		add = (dest[k] - '0') + addrem;
 		addrem = add / 10;
-		dest[k] = add % 10 + 0;
+		dest[k] = add % 10 + '0';
 	}
 	if (addrem)
 	{
@@ -75,7 +75,7 @@ int check_for_digits(char **av)
 	{
 		for (j = 0; av[i][j]; j++)
 		{
-			if (av[i][j] < 0 || av[i][j] > 9)
+			if (av[i][j] < '0' || av[i][j] > '9')
 				return (1);
 		}
 	}
@@ -94,7 +94,7 @@ void init(char *str, int l)
 	int i;
 
 	for (i = 0; i < l; i++)
-		str[i] = 0;
+		str[i] = '0';
 	str[i] = '\0';
 }
 
